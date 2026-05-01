@@ -1,0 +1,23 @@
+server.ts
+  d09588fa00adafee 33-42,142,156,158-159,162-163,167,260
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "d828bb897981aaa5741676d82b89a21b3da7fee1",
+  "prompts": {
+    "d09588fa00adafee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46c3e587-d2bf-4425-b1a3-a4fd9a0bba84",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "jiangplus",
+      "messages": [],
+      "total_additions": 30,
+      "total_deletions": 8,
+      "accepted_lines": 26,
+      "overriden_lines": 3
+    }
+  }
+}
