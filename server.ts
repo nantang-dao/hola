@@ -30,6 +30,16 @@ interface Session {
   user: UserInfo
 }
 
+// ── HTML helpers ───────────────────────────────────────────────────────
+function esc(s: unknown): string {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+}
+
 // ── PKCE helpers ───────────────────────────────────────────────────────
 function generateCodeVerifier(): string {
   const bytes = crypto.getRandomValues(new Uint8Array(32))
@@ -129,7 +139,7 @@ function layout(title: string, body: string): string {
 }
 
 function homePage(error?: string): string {
-  const errHtml = error ? `<p class="error">${error}</p>` : ""
+  const errHtml = error ? `<p class="error">${esc(error)}</p>` : ""
   return layout("首页", `
     <h1>¡Hola!</h1>
     <p class="subtitle">这是一个使用 Semi 身份登录的示例应用。<br/>点击下方按钮体验 OAuth 2.0 授权流程。</p>
@@ -143,18 +153,18 @@ function homePage(error?: string): string {
 
 function profilePage(session: Session): string {
   const u = session.user
-  const initial = (u.handle ?? u.sub)?.[0]?.toUpperCase() ?? "?"
+  const initial = esc((u.handle ?? u.sub)?.[0]?.toUpperCase() ?? "?")
   const rows = [
-    ["用户 ID", u.sub ?? "—"],
-    ["用户名", u.handle ?? "—"],
+    ["用户 ID", esc(u.sub ?? "—")],
+    ["用户名", esc(u.handle ?? "—")],
     ["手机验证", u.phone_verified ? '<span class="badge">已验证</span>' : '<span class="badge no">未验证</span>'],
     ["邮箱验证", u.email_verified ? '<span class="badge">已验证</span>' : '<span class="badge no">未验证</span>'],
-    ["钱包地址", u.wallet_address ? `${u.wallet_address.slice(0, 8)}…${u.wallet_address.slice(-6)}` : "—"],
-    ["授权范围", (u.scopes_granted ?? []).join(", ") || "—"],
+    ["钱包地址", u.wallet_address ? esc(`${u.wallet_address.slice(0, 8)}…${u.wallet_address.slice(-6)}`) : "—"],
+    ["授权范围", esc((u.scopes_granted ?? []).join(", ") || "—")],
   ]
   return layout("个人资料", `
     <div class="profile-avatar">${initial}</div>
-    <h1>${u.handle ?? "匿名用户"}</h1>
+    <h1>${esc(u.handle ?? "匿名用户")}</h1>
     <p class="subtitle">已通过 Semi 身份验证登录</p>
     <table class="info-table">
       ${rows.map(([label, value]) => `
@@ -247,6 +257,7 @@ async function handleCallback(url: URL): Promise<Response> {
     const res = await fetch(`${SEMI_BACKEND}/oauth/userinfo`, {
       headers: { Authorization: `Bearer ${tokenData.access_token}` },
     })
+    if (!res.ok) return html(homePage("获取用户信息失败"))
     user = await res.json()
   } catch {
     return html(homePage("获取用户信息失败"))
