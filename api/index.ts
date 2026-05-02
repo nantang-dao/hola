@@ -1,8 +1,6 @@
 // Hola — "Login with Semi" OAuth 2.0 example
-// Runs on Vercel Edge Runtime and Bun (local dev).
-// PKCE state and sessions are stored in HMAC-signed cookies — no in-memory Maps needed.
-
-export const config = { runtime: "edge" }
+// Runs on Vercel Serverless (Node.js) and Bun (local dev).
+// PKCE state and sessions are stored in HMAC-signed cookies — no in-memory state needed.
 
 const CLIENT_ID = process.env.SEMI_CLIENT_ID ?? ""
 const CLIENT_SECRET = process.env.SEMI_CLIENT_SECRET ?? ""
