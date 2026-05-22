@@ -1,0 +1,28 @@
+oauth2-integration.md
+  s_6963d9329be073::t_1e4560b83ea2bc 154
+  s_6963d9329be073::t_3a53145bb31ac0 371-378
+  s_6963d9329be073::t_9da5f98d2424d5 330-338
+  s_6963d9329be073::t_127e4422c2f346 274
+  s_6963d9329be073::t_62c5f7c937bfa3 472-473
+  s_6963d9329be073::t_37175d2f8dcd36 27
+  s_6963d9329be073::t_7b79c1aa83e598 504-536
+  s_6963d9329be073::t_1e75f215b8f837 557-560
+  s_6963d9329be073::t_65032c9d1ad3fb 198-207
+  s_6963d9329be073::t_04ff4584a3d46d 285
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "98ab76be599c45fb5cf02039efc26d614b78f90d",
+  "prompts": {},
+  "sessions": {
+    "s_6963d9329be073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4bd0cd01-7047-4d8f-9be8-8e9d49b5320c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "jiangplus <jiang.plus.times@gmail.com>"
+    }
+  }
+}
