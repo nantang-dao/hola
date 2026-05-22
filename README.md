@@ -7,7 +7,7 @@
 ### 第一步：在 Semi 注册 OAuth 应用
 
 1. 启动 Semi 后端和前端（端口默认分别为 3000、3001）
-2. 登录后访问 `http://localhost:3001/oauth/apps`
+2. 登录后访问 `https://www.semi.im/oauth/apps`
 3. 点击 **注册应用**，填写以下信息：
 
    | 字段 | 填写内容 |
@@ -40,8 +40,8 @@ SEMI_CLIENT_ID=semi_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 SEMI_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 # Semi 前端和后端地址（本地开发默认值）
-SEMI_FRONTEND_URL=http://localhost:3001
-SEMI_BACKEND_URL=http://localhost:3000
+SEMI_FRONTEND_URL=https://www.semi.im
+SEMI_BACKEND_URL=https://api.semi.im
 
 # 回调地址，必须与注册时填写的一致
 REDIRECT_URI=http://localhost:4000/callback
@@ -65,8 +65,8 @@ bun start     # 生产模式
 | `PORT` | 否 | 服务监听端口，默认 `4000` |
 | `SEMI_CLIENT_ID` | 是 | 注册应用时获得的 client_id |
 | `SEMI_CLIENT_SECRET` | 是 | 注册应用时获得的 client_secret（仅显示一次） |
-| `SEMI_FRONTEND_URL` | 否 | Semi 前端地址，默认 `http://localhost:3001` |
-| `SEMI_BACKEND_URL` | 否 | Semi 后端地址，默认 `http://localhost:3000` |
+| `SEMI_FRONTEND_URL` | 否 | Semi 前端地址，默认 `https://www.semi.im` |
+| `SEMI_BACKEND_URL` | 否 | Semi 后端地址，默认 `https://api.semi.im` |
 | `REDIRECT_URI` | 否 | OAuth 回调地址，默认 `http://localhost:{PORT}/callback` |
 
 ---
@@ -231,4 +231,4 @@ Content-Type: application/json
 
 **Q: 报错 `Application is not active`**
 
-进入 `http://localhost:3001/oauth/apps`，将应用状态改为 **已上线**。
+进入 `https://www.semi.im/oauth/apps`，将应用状态改为 **已上线**。

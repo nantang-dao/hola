@@ -1,12 +1,14 @@
 // Hola — "Login with Semi" OAuth 2.0 example
-// Runs on Vercel Serverless (Node.js) and Bun (local dev).
+// Runs on Vercel Edge Runtime and Bun (local dev).
 // PKCE state and sessions are stored in HMAC-signed cookies — no in-memory state needed.
+
+export const config = { runtime: "edge" }
 
 const CLIENT_ID = process.env.SEMI_CLIENT_ID ?? ""
 const CLIENT_SECRET = process.env.SEMI_CLIENT_SECRET ?? ""
 const REDIRECT_URI = process.env.REDIRECT_URI ?? ""
 const SEMI_FRONTEND = (process.env.SEMI_FRONTEND_URL ?? "http://localhost:3001").replace(/\/$/, "")
-const SEMI_BACKEND = (process.env.SEMI_BACKEND_URL ?? "http://localhost:3000").replace(/\/$/, "")
+const SEMI_BACKEND = (process.env.SEMI_BACKEND_URL ?? "https://api.semi.im").replace(/\/$/, "")
 const SESSION_SECRET = process.env.SESSION_SECRET ?? "dev-secret"
 const SCOPES = "openid profile wallet"
 
@@ -338,7 +340,8 @@ function html(body: string, status = 200): Response {
 
 // ── Main handler ──────────────────────────────────────────────────────
 export default async function handler(req: Request): Promise<Response> {
-  const url = new URL(req.url)
+  const base = `https://${req.headers.get("host") ?? "localhost"}`
+  const url = new URL(req.url, base)
   const { pathname } = url
 
   if (pathname === "/") return html(homePage())
