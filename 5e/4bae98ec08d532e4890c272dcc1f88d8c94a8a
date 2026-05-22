@@ -1,0 +1,47 @@
+.gitignore
+  d09588fa00adafee 2
+api/index.ts
+  s_6963d9329be073::t_e7b109323f9f2e 11
+  3537aa10dc74f7a5 2,5,343-344
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "5e4bae98ec08d532e4890c272dcc1f88d8c94a8a",
+  "prompts": {
+    "3537aa10dc74f7a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "128899e3-4e6a-41f5-b1e2-e6be78881d3b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "jiangplus <jiang.plus.times@gmail.com>",
+      "total_additions": 5,
+      "total_deletions": 2,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "d09588fa00adafee": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46c3e587-d2bf-4425-b1a3-a4fd9a0bba84",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "jiangplus",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 5,
+      "overriden_lines": 5
+    }
+  },
+  "sessions": {
+    "s_6963d9329be073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4bd0cd01-7047-4d8f-9be8-8e9d49b5320c",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "jiangplus <jiang.plus.times@gmail.com>"
+    }
+  }
+}
